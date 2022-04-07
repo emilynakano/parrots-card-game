@@ -1,0 +1,39 @@
+body {
+    background: #dbf7af;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    
+}
+
+.title {
+    width: 600px;
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 56px;
+    color: #75B79E;
+    margin: 40px auto;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
+.carta {
+    width: 117px;
+    height: 146px;
+    background-color: #A7E9AF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    margin-right: 35px;
+    margin-bottom: 35px;
+}
+.carta > img {
+    width: 100px;
+    height: 100px;
+}
