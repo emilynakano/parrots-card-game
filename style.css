@@ -45,10 +45,16 @@ body {
     transition: all .5s;
     transform-style: preserve-3d;
 }
-.virarGif {
+.gifSelecionada {
     transform: rotateY(0deg);
 }
-.virarCarta {
+.cartaSelecionada {
+    transform: rotateY(-180deg);
+}
+.agifSelecionada {
+    transform: rotateY(0deg);
+}
+.acartaSelecionada {
     transform: rotateY(-180deg);
 }
 
