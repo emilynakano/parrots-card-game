@@ -1,4 +1,4 @@
-let gifs = [
+let arrayGif = [
     "images/bobrossparrot.gif",
     "images/bobrossparrot.gif",
     "images/explodyparrot.gif",
@@ -14,68 +14,76 @@ let gifs = [
     "images/unicornparrot.gif",
     "images/unicornparrot.gif"
 ]
-let qtd = prompt("quantas cartas?");
-while(qtd < 4 || qtd > 14) {
-    qtd = prompt("quantas cartas?");
+
+let firstCard, secondCard;
+let jogada = 0;
+let ma = 0;
+let cont = 0;
+let container = document.querySelector(".container");
+
+let numberCards = prompt("quantas cartas deseja jogar?");
+
+while(numberCards < 4 || numberCards > 14 ||  numberCards % 2 != 0) {
+    numberCards = prompt("a quantia deve ser um numero par entre 4 e 14, digite novamente");
 }
 
-gifs.length = qtd;
-gifs.sort(comparador); 
+arrayGif.length = numberCards;
+
+arrayGif.sort(comparador); 
+
 function comparador() { 
 	return Math.random() - 0.5; 
 }
-let firstCard;
-let secondCard;
-let jogada = 0;
 
-function virar(elemento) {
+function flip(elemento) {
     if(!firstCard) {
         firstCard = elemento;
     } else { 
         secondCard = elemento;
     }
 
-    firstCard.querySelector(".carta").classList.add("cartaSelecionada");
-    firstCard.querySelector(".gif").classList.add("gifSelecionada");
-    secondCard.querySelector(".carta").classList.add("cartaSelecionada");
-    secondCard.querySelector(".gif").classList.add("gifSelecionada");
+    firstCard.querySelector(".front-face").classList.add("front-faceSelecionada");
+    firstCard.querySelector(".back-face").classList.add("back-faceSelecionada");
+    secondCard.querySelector(".front-face").classList.add("front-faceSelecionada");
+    secondCard.querySelector(".back-face").classList.add("back-faceSelecionada");
     
     
     
     
     if(firstCard.innerHTML === secondCard.innerHTML) {
 
-        secondCard.querySelector(".carta").classList.add("acartaSelecionada");
-        secondCard.querySelector(".gif").classList.add("agifSelecionada");
-        firstCard.querySelector(".carta").classList.add("acartaSelecionada");
-        firstCard.querySelector(".gif").classList.add("agifSelecionada");
-        
-
+        secondCard.querySelector(".front-face").classList.add("afront-faceSelecionada");
+        secondCard.querySelector(".back-face").classList.add("aback-faceSelecionada");
+        firstCard.querySelector(".front-face").classList.add("afront-faceSelecionada");
+        firstCard.querySelector(".back-face").classList.add("aback-faceSelecionada");
+        ma ++;
+    
     }
     setTimeout( function() {
-        secondCard.querySelector(".carta").classList.remove("cartaSelecionada");
-        secondCard.querySelector(".gif").classList.remove("gifSelecionada");
-        firstCard.querySelector(".carta").classList.remove("cartaSelecionada");
-        firstCard.querySelector(".gif").classList.remove("gifSelecionada");
+        secondCard.querySelector(".front-face").classList.remove("front-faceSelecionada");
+        secondCard.querySelector(".back-face").classList.remove("back-faceSelecionada");
+        firstCard.querySelector(".front-face").classList.remove("front-faceSelecionada");
+        firstCard.querySelector(".back-face").classList.remove("back-faceSelecionada");
         [firstCard, secondCard] = [null, null];
+        jogada = jogada + 1;
       }, 1000);
-
-    jogada ++;
+ 
+      if(ma === numberCards/2) {
+        setTimeout( function() {
+          alert(`Yay! Você ganhou em ${(jogada * 2) + 2} jogadas`);
+        }, 50);
+    }
+      
 }
 
-console.log(jogada);
 
-
-let cont = 0;
-let container = document.querySelector(".container");
-
-while(cont < qtd) {
-    container.innerHTML = container.innerHTML + `<div class="oi" onclick="virar(this)">
-    <div class="gif">
-        <img src="${gifs[cont]}" class="back-face" />
+while(cont < numberCards) {
+    container.innerHTML = container.innerHTML + `<div class="card" onclick="flip(this)">
+    <div class="back-face">
+        <img src="${arrayGif[cont]}"  />
     </div>
-    <div class="carta">
-        <img src="images/front.png" class="front-face" />
+    <div class="front-face">
+        <img src="images/front.png" />
     </div>
     
 </div>

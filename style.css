@@ -21,7 +21,7 @@ body {
     flex-wrap: wrap;
     max-width: 1000px;
 }
-.oi {
+.card {
     width: 117px;
     margin-right: 35px;
     display: flex;
@@ -29,7 +29,7 @@ body {
     margin-bottom: 35px;
 }
 
-.gif {
+.back-face {
     width: 117px;
     height: 146px;
     background-color: #A7E9AF;
@@ -45,23 +45,7 @@ body {
     transition: all .5s;
     transform-style: preserve-3d;
 }
-.gifSelecionada {
-    transform: rotateY(0deg);
-}
-.cartaSelecionada {
-    transform: rotateY(-180deg);
-}
-.agifSelecionada {
-    transform: rotateY(0deg);
-}
-.acartaSelecionada {
-    transform: rotateY(-180deg);
-}
-
-.escondido {
-    display: none;
-}
-.carta {
+.front-face {
     width: 117px;
     height: 146px;
     background-color: #A7E9AF;
@@ -77,17 +61,31 @@ body {
     transform-style: preserve-3d;
 }
 
-.carta img {
+.back-faceSelecionada {
+    transform: rotateY(0deg);
+}
+.front-faceSelecionada {
+    transform: rotateY(-180deg);
+}
+.aback-faceSelecionada {
+    transform: rotateY(0deg);
+}
+.afront-faceSelecionada {
+    transform: rotateY(-180deg);
+}
+
+
+.front-face img {
     width: 100px;
     height: 100px;
 }
-.gif img {
+.back-face img {
     width: 100px;
     height: 100px;
 }
 
 
-@media (max-width: 614px) {
+@media (max-width: 435px) {
     .title {
         margin: 40px auto;
         width: 312px;
@@ -101,6 +99,8 @@ body {
     }
     .container {
         width: 117px;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         margin: 0 auto;
     }
